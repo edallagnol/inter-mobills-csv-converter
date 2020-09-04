@@ -1,6 +1,7 @@
 package com.github.edallagnol
 
 import com.fasterxml.jackson.databind.ObjectReader
+import com.fasterxml.jackson.dataformat.csv.CsvSchema
 import java.io.BufferedReader
 import java.io.InputStream
 import java.io.OutputStream
@@ -14,20 +15,31 @@ class InterMobillsConverter(val conta: String? = null) {
         val csvInterReader = readCsv(input)
         val objectReader = createObjectReader()
         val csvMobills = convertObjects(csvInterReader, objectReader)
-        writeOutput(output, csvMobills);
+        writeOutput(output, csvMobills)
     }
 
-    private fun schemaInter() = mapper.schemaFor(TransactionInter::class.java).withHeader().withColumnSeparator(';')
+    private fun schemaInter(): CsvSchema {
+        return mapper.schemaFor(TransactionInter::class.java)
+                .withHeader()
+                .withColumnSeparator(';')
+                .withColumnReordering(true)
+    }
 
-    private fun schemaMobills() = mapper.schemaFor(TransactionMobills::class.java).withHeader().withColumnSeparator(';')
+    private fun schemaMobills(): CsvSchema {
+        return mapper.schemaFor(TransactionMobills::class.java)
+                .withHeader()
+                .withColumnSeparator(';')
+    }
 
-    private fun convertToMobills(transactionInter: TransactionInter) = TransactionMobills(
-            transactionInter.data,
-            transactionInter.estabelecimento,
-            BigDecimal(transactionInter.valor.replace(',', '.')).negate().toString(),
-            this.conta,
-            null
-    )
+    private fun convertToMobills(transactionInter: TransactionInter): TransactionMobills {
+        return TransactionMobills(
+                transactionInter.data,
+                transactionInter.estabelecimento,
+                BigDecimal(transactionInter.valor.replace(',', '.')).negate().toString(),
+                this.conta,
+                null
+        )
+    }
 
     private fun convertObjects(csvInter: BufferedReader, reader: ObjectReader): Iterable<TransactionMobills> {
         return reader.readValues<TransactionInter>(csvInter)
@@ -36,8 +48,10 @@ class InterMobillsConverter(val conta: String? = null) {
                 .asIterable()
     }
 
-    private fun createObjectReader() = mapper.readerFor(TransactionInter::class.java)
-            .with(schemaInter())
+    private fun createObjectReader(): ObjectReader {
+        return mapper.readerFor(TransactionInter::class.java)
+                .with(schemaInter())
+    }
 
     private fun readCsv(input: InputStream): BufferedReader {
         val csvInter = input.bufferedReader()
