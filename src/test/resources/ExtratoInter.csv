@@ -1,0 +1,21 @@
+Fatura
+Conta ;1234567
+Cartao ;2306.XXXX.XXXX.9402
+Periodo ;01/07/2020;02/09/2020
+
+Data da Transacao;Estabelecimento;Tipo da Transacao;Valor
+22/08/2020;Gift Card;;100,00
+15/08/2020;Recargap    *tim       Sao Paulo     Bra;;19,00
+14/08/2020;Mercpago*pgtodecontas  Osasco        Bra;;151,99
+14/08/2020;Lanchonete Do Aeroport Chapeco       Bra;;9,00
+13/08/2020;Posto Delta Concordia  Concordia     Sc;;134,41
+11/08/2020;Super Coperdia         Concordia     Bra;;57,33
+11/08/2020;Recargap    *tim       Sao Paulo     Bra;;20,00
+11/08/2020;Netflix.com            Sao Paulo     Bra;;32,90
+11/08/2020;Raia 397               Concordia     Bra;;141,48
+10/08/2020;Pagamento On Line;;-999,85
+26/07/2020;Google Nintendo        Sao Paulo     Bra;;19,90
+23/07/2020;Iof Internacional;;4,08
+21/07/2020;Steamgames.com         Seattle       Deu;;64,02
+13/07/2020;Ifood       *ifood     Osasco        Bra;;31,90
+11/07/2020;Netflix.com            Sao Paulo     Bra;;32,90

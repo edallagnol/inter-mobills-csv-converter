@@ -1,0 +1,16 @@
+Data;Descrição;Valor;Conta;Categoria
+"22/08/2020";"Gift Card";"-100.00";contaTeste;
+"15/08/2020";"Recargap    *tim       Sao Paulo     Bra";"-19.00";contaTeste;
+"14/08/2020";"Mercpago*pgtodecontas  Osasco        Bra";"-151.99";contaTeste;
+"14/08/2020";"Lanchonete Do Aeroport Chapeco       Bra";"-9.00";contaTeste;
+"13/08/2020";"Posto Delta Concordia  Concordia     Sc";"-134.41";contaTeste;
+"11/08/2020";"Super Coperdia         Concordia     Bra";"-57.33";contaTeste;
+"11/08/2020";"Recargap    *tim       Sao Paulo     Bra";"-20.00";contaTeste;
+"11/08/2020";"Netflix.com            Sao Paulo     Bra";"-32.90";contaTeste;
+"11/08/2020";"Raia 397               Concordia     Bra";"-141.48";contaTeste;
+"10/08/2020";"Pagamento On Line";"999.85";contaTeste;
+"26/07/2020";"Google Nintendo        Sao Paulo     Bra";"-19.90";contaTeste;
+"23/07/2020";"Iof Internacional";"-4.08";contaTeste;
+"21/07/2020";"Steamgames.com         Seattle       Deu";"-64.02";contaTeste;
+"13/07/2020";"Ifood       *ifood     Osasco        Bra";"-31.90";contaTeste;
+"11/07/2020";"Netflix.com            Sao Paulo     Bra";"-32.90";contaTeste;
