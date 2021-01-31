@@ -46,7 +46,8 @@ dependencies {
     implementation(kotlin("stdlib"))
     implementation("com.fasterxml.jackson.dataformat", "jackson-dataformat-csv", "2.11.2")
     implementation("com.fasterxml.jackson.module", "jackson-module-kotlin", "2.11.2")
-    testCompile("org.junit.jupiter:junit-jupiter-api:$junitVersion")
-    testCompile("org.junit.jupiter:junit-jupiter-params:$junitVersion")
-    testRuntime("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
+    implementation("commons-cli", "commons-cli", "1.3.1")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:$junitVersion")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
 }
