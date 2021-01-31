@@ -5,7 +5,9 @@ import com.fasterxml.jackson.dataformat.csv.CsvSchema
 import java.io.BufferedReader
 import java.io.InputStream
 import java.io.OutputStream
+import java.io.OutputStreamWriter
 import java.math.BigDecimal
+import java.nio.charset.StandardCharsets
 
 class InterMobillsConverter(val conta: String? = null) {
 
@@ -35,7 +37,11 @@ class InterMobillsConverter(val conta: String? = null) {
         return TransactionMobills(
                 transactionInter.data,
                 transactionInter.estabelecimento,
-                BigDecimal(transactionInter.valor.replace(',', '.')).negate().toString(),
+                BigDecimal(transactionInter.valor
+                        .replace(".", "")
+                        .replace(',', '.'))
+                        .negate()
+                        .toString(),
                 this.conta,
                 null
         )
@@ -55,16 +61,18 @@ class InterMobillsConverter(val conta: String? = null) {
 
     private fun readCsv(input: InputStream): BufferedReader {
         val csvInter = input.bufferedReader()
-        skipLines(csvInter, 5)
+        skipLinesUntilEmpty(csvInter)
         return csvInter
     }
 
     @Suppress("SameParameterValue")
-    private fun skipLines(reader: BufferedReader, lines: Int) {
-        repeat(lines) { reader.readLine() }
+    private fun skipLinesUntilEmpty(reader: BufferedReader) {
+        do {
+            val line = reader.readLine()
+        } while (line.isNotEmpty())
     }
 
     private fun writeOutput(output: OutputStream, csvMobills: Iterable<TransactionMobills>) {
-        mapper.writer(schemaMobills()).writeValue(output, csvMobills)
+        mapper.writer(schemaMobills()).writeValue(OutputStreamWriter(output, StandardCharsets.ISO_8859_1), csvMobills)
     }
 }
