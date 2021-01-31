@@ -4,11 +4,22 @@ plugins {
     java
     kotlin("jvm") version "1.3.72"
     id("com.github.johnrengelman.shadow") version "6.1.0"
+    application
 }
 
 group = "com.github.edallagnol"
 version = "1.0-SNAPSHOT"
 
+val mainClass = "com.github.edallagnol.MainKt"
+
+application {
+    mainClassName = mainClass
+}
+
+val run by tasks.getting(JavaExec::class) {
+    standardInput = System.`in`
+    standardOutput = System.out
+}
 
 val junitVersion: String = "5.6.2"
 
