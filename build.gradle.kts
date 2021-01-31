@@ -1,6 +1,9 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
 plugins {
     java
     kotlin("jvm") version "1.3.72"
+    id("com.github.johnrengelman.shadow") version "6.1.0"
 }
 
 group = "com.github.edallagnol"
@@ -15,6 +18,17 @@ repositories {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+val shadowJar: ShadowJar by tasks
+shadowJar.apply {
+    manifest.attributes.apply {
+        put("Implementation-Title", "Gradle Jar File Example")
+        put("Implementation-Version", version)
+        put("Main-Class", mainClass)
+    }
+
+    baseName = project.name + "-all"
 }
 
 dependencies {
